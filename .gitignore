@@ -1,3 +1,5 @@
 migrations
 *.py~
 *.pyc
+.DS_Store
+.idea
