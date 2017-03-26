@@ -26,5 +26,5 @@ class Copy(models.Model):
     receipt = models.ForeignKey(Receipt, related_name='products')
     name = models.CharField(max_length=100)
     description = models.TextField(default="")
-    price = models.IntegerField(default=0)
-    barcode = models.IntegerField()
+    price = models.FloatField(default=0.0)
+    barcode = models.CharField(max_length=200, unique=True)
