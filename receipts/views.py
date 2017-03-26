@@ -49,9 +49,10 @@ def add_receipt(request, username, comp):
 @authentication_classes((TokenAuthentication,))
 @permission_classes((permissions.IsAuthenticated,))
 def add_products(request, rec_id, barcodes):
+    return JsonResponse('{"detail": "successful"}')
     receipt = Receipt.objects.get(pk=rec_id)
     barcode_list = barcodes.replace(' ', '').split(',')
     for every_barcode in barcode_list:
         receipt.purchase(barcode=every_barcode)
     serializer = ReceiptReadSerializer(receipt)
-    return JsonResponse(serializer.data)
+    return JsonResponse('{"detail": "successful"}')
