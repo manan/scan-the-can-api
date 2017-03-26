@@ -25,7 +25,7 @@ SECRET_KEY = 't6d2c^7e4rtgxk$$!-1yeidvtslfmquiycgpy*s4xc@4dsr$l7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 AUTH_PROFILE_MODULE = 'userprofiles.UserProfile'
 

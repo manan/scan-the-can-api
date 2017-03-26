@@ -3,6 +3,13 @@ from .models import Receipt, Copy
 from products.serializers import ProductExtendedSerializer
 
 
+class CopiesExtendedSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Copy
+        fields = ('id', 'name', 'description', 'price', 'barcode')
+
+
 class ReceiptReadSerializer(serializers.ModelSerializer):
     username = serializers.ReadOnlyField(source='owner.user.username')
     company_name = serializers.ReadOnlyField(source='company.name')
@@ -18,10 +25,3 @@ class ReceiptWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Receipt
         fields = ('id', 'owner', 'products', 'company')
-
-
-class CopiesExtendedSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Copy
-        fields = ('id', 'name', 'description', 'price', 'barcode')
