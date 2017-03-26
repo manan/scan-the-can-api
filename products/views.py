@@ -25,6 +25,6 @@ class AddProduct(generics.CreateAPIView):
     serializer_class = ProductWriteSerializer
     authentication_classes = (TokenAuthentication,)
     permission_classes = [
-        permissions.IsAdminUser,
+        permissions.IsAuthenticated,
         IsCompany,
     ]
