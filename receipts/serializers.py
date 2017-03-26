@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Receipt, Copy
-from products.serializers import ProductExtendedSerializer
 
 
 class CopiesExtendedSerializer(serializers.ModelSerializer):
@@ -24,4 +23,4 @@ class ReceiptWriteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Receipt
-        fields = ('id', 'owner', 'products', 'company')
+        fields = ('id', 'owner', 'company')
