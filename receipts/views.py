@@ -12,7 +12,7 @@ from companies.models import Company
 from userprofiles.models import UserProfile
 from .serializers import ReceiptReadSerializer, ReceiptWriteSerializer
 from .models import Receipt
-
+from django.core import serializers
 # Create your views here.
 
 
@@ -42,7 +42,8 @@ class AddReceipt(generics.CreateAPIView):
 def add_receipt(request, username, comp):
     rec = Receipt(owner=UserProfile.objects.get(user__username=username), company=Company.objects.get(pk=int(comp)))
     rec.save()
-    return HttpResponse("{id: " + str(rec.id) + "}", status=status.HTTP_200_OK)
+    # return HttpResponse("{id: " + str(rec.id) + "}", status=status.HTTP_200_OK)
+    return JsonResponse(serializers.serialize('json', rec), safe=False)
 
 
 @csrf_exempt
