@@ -7,6 +7,8 @@ from rest_framework import permissions
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 
+from ScanTheCan.companies.models import Company
+from ScanTheCan.userprofiles.models import UserProfile
 from .serializers import ReceiptReadSerializer, ReceiptWriteSerializer
 from .models import Receipt
 
@@ -30,6 +32,16 @@ class AddReceipt(generics.CreateAPIView):
     permission_classes = [
         permissions.IsAuthenticated,
     ]
+
+
+@csrf_exempt
+@api_view(['GET'])
+@authentication_classes((TokenAuthentication,))
+@permission_classes((permissions.IsAuthenticated,))
+def add_receipt(request, username, comp):
+    rec = Receipt(owner=UserProfile.objects.get(user__username=username), comp=Company.objects.get(pk=int(comp)))
+    rec.save()
+    return HttpResponse("{id:" + str(rec.id) + " }")
 
 
 @csrf_exempt
