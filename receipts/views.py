@@ -39,7 +39,7 @@ class AddReceipt(generics.CreateAPIView):
 @authentication_classes((TokenAuthentication,))
 @permission_classes((permissions.IsAuthenticated,))
 def add_receipt(request, username, comp):
-    rec = Receipt(owner=UserProfile.objects.get(user__username=username), comp=Company.objects.get(pk=int(comp)))
+    rec = Receipt(owner=UserProfile.objects.get(user__username=username), company=Company.objects.get(pk=int(comp)))
     rec.save()
     return HttpResponse("{id:" + str(rec.id) + " }")
 
