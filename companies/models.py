@@ -16,4 +16,4 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 class Company(models.Model):
     user = models.OneToOneField(User, related_name="company")
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)

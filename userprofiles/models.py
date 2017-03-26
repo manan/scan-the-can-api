@@ -6,4 +6,3 @@ from django.db import models
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
-    barcode = models.IntegerField(unique=True)
