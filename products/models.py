@@ -8,5 +8,5 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(default="")
     price = models.FloatField(default=0.0)
-    barcode = models.CharField(max_length=True, unique=True)
+    barcode = models.CharField(max_length=200, unique=True)
     quantity = models.IntegerField(default=0)
