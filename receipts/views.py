@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import generics
@@ -42,6 +43,6 @@ def add_products(request, rec_id, barcodes):
         for every_barcode in barcode_list:
             receipt.purchase(barcode=every_barcode)
         serializer = ReceiptReadSerializer(receipt)
-        return HttpResponse(serializer.data)
+        return JsonResponse(serializer.data)
     except Exception as e:
-        return HttpResponse('{"detail": "%s"}' % e.message)
+        return HttpResponse('{"detail": "failed"}')
