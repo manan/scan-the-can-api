@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework.authtoken import views as view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -22,4 +23,5 @@ urlpatterns = [
     url(r'companies/', include('companies.urls')),
     url(r'receipts/', include('receipts.urls')),
     url(r'products/', include('products.urls')),
+    url(r'^token-auth/$', view.obtain_auth_token),
 ]
