@@ -37,12 +37,9 @@ class AddReceipt(generics.CreateAPIView):
 @authentication_classes((TokenAuthentication,))
 @permission_classes((permissions.IsAuthenticated,))
 def add_products(request, rec_id, barcodes):
-    try:
-        receipt = Receipt.objects.get(pk=rec_id)
-        barcode_list = barcodes.replace(' ', '').split(',')
-        for every_barcode in barcode_list:
-            receipt.purchase(barcode=every_barcode)
-        serializer = ReceiptReadSerializer(receipt)
-        return JsonResponse(serializer.data)
-    except Exception as e:
-        return HttpResponse('{"detail": "failed"}')
+    receipt = Receipt.objects.get(pk=rec_id)
+    barcode_list = barcodes.replace(' ', '').split(',')
+    for every_barcode in barcode_list:
+        receipt.purchase(barcode=every_barcode)
+    serializer = ReceiptReadSerializer(receipt)
+    return JsonResponse(serializer.data)
