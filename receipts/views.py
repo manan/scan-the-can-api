@@ -42,8 +42,8 @@ class AddReceipt(generics.CreateAPIView):
 def add_receipt(request, username, comp):
     rec = Receipt(owner=UserProfile.objects.get(user__username=username), company=Company.objects.get(pk=int(comp)))
     rec.save()
-    # return HttpResponse("{id: " + str(rec.id) + "}", status=status.HTTP_200_OK)
-    return JsonResponse(serializers.serialize('json', rec), safe=False)
+    return HttpResponse("{id: " + str(rec.id) + "}", status=status.HTTP_200_OK)
+    # return JsonResponse(serializers.serialize('json', rec), safe=False)
 
 
 @csrf_exempt
