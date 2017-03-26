@@ -7,8 +7,8 @@ from rest_framework import permissions
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 
-from ScanTheCan.companies.models import Company
-from ScanTheCan.userprofiles.models import UserProfile
+from companies.models import Company
+from userprofiles.models import UserProfile
 from .serializers import ReceiptReadSerializer, ReceiptWriteSerializer
 from .models import Receipt
 
