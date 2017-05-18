@@ -4,3 +4,4 @@ migrations
 .DS_Store
 .idea
 db.sqlite3
+.gitignore~
