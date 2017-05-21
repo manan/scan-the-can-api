@@ -18,7 +18,7 @@ from django.contrib import admin
 from rest_framework.authtoken import views as view
 
 urlpatterns = [
-    url(r'^$', admin.site.urls),
+    url(r'^', admin.site.urls),
     url(r'^profiles/', include('userprofiles.urls')),
     url(r'^companies/', include('companies.urls')),
     url(r'^receipts/', include('receipts.urls')),
